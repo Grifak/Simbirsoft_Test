@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <jsoup.version>1.14.2</jsoup.version>
+        <liquibase.version>3.8.0</liquibase.version>
     </properties>
     <dependencies>
         <dependency>
@@ -58,6 +59,27 @@
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- PostgreSql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <!-- Liquibase -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
+        </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
     </dependencies>
 
 
