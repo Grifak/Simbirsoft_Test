@@ -1,8 +1,10 @@
 package com.example.simbirsoft_test.service;
 
+import com.example.simbirsoft_test.dto.WordResponseDto;
 import com.example.simbirsoft_test.model.Word;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author Vadim
@@ -15,7 +17,7 @@ public interface WordService {
      * @param link to read the page
      * @return true if created, false if not created
      */
-    Boolean createWords(String link);
+    List<WordResponseDto> createWords(String link);
 
     /**
      * Download file with all records in the database

@@ -1,6 +1,7 @@
 package com.example.simbirsoft_test.service.impl;
 
 import com.example.simbirsoft_test.csv.CsvWriter;
+import com.example.simbirsoft_test.dto.WordResponseDto;
 import com.example.simbirsoft_test.exception.DataBaseEmptyException;
 import com.example.simbirsoft_test.exception.HtmlReaderIOException;
 import com.example.simbirsoft_test.mapper.WordMapper;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,14 +28,17 @@ public class WordServiceImpl implements WordService {
 
     @Transactional
     @Override
-    public Boolean createWords(String link) {
+    public List<WordResponseDto> createWords(String link) {
         String strHtml = htmlReader.readHTML(link);
 
         List<Word> entities = wordMapper.htmlToEntity(strHtml);
         entities.stream()
                 .forEach(e -> repository.save(e));
 
-        return true;
+        List<WordResponseDto> responseDtos = entities.stream()
+                .map(e -> wordMapper.entityToResponseDto(e))
+                .collect(Collectors.toList());
+        return responseDtos;
     }
 
     @Override
