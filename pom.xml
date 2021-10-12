@@ -17,6 +17,7 @@
         <java.version>11</java.version>
         <jsoup.version>1.14.2</jsoup.version>
         <liquibase.version>3.8.0</liquibase.version>
+        <superCsv.version>2.4.0</superCsv.version>
     </properties>
     <dependencies>
         <dependency>
@@ -78,6 +79,13 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- SuperCsv -->
+        <dependency>
+            <groupId>net.sf.supercsv</groupId>
+            <artifactId>super-csv</artifactId>
+            <version>${superCsv.version}</version>
         </dependency>
 
     </dependencies>
