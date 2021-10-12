@@ -18,6 +18,7 @@
         <jsoup.version>1.14.2</jsoup.version>
         <liquibase.version>3.8.0</liquibase.version>
         <superCsv.version>2.4.0</superCsv.version>
+        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
     <dependencies>
         <dependency>
@@ -86,6 +87,13 @@
             <groupId>net.sf.supercsv</groupId>
             <artifactId>super-csv</artifactId>
             <version>${superCsv.version}</version>
+        </dependency>
+
+        <!-- mapStruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${org.mapstruct.version}</version>
         </dependency>
 
     </dependencies>
