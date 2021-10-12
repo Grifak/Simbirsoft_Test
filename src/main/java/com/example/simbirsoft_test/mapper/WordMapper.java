@@ -1,8 +1,10 @@
 package com.example.simbirsoft_test.mapper;
 
+import com.example.simbirsoft_test.dto.WordResponseDto;
 import com.example.simbirsoft_test.model.Word;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,8 +17,8 @@ import java.util.Map;
  * @version 1.0
  * Mapper for {@link Word}
  */
-@Component
-public class WordMapper {
+@Mapper
+public abstract class WordMapper {
     /**
      * Create entities from html string
      * @param strHtml string with html
@@ -48,4 +50,11 @@ public class WordMapper {
 
         return entities;
     }
+
+    /**
+     *Convert entity to responseDto
+     * @param word entity from database
+     * @return responseDto
+     */
+    public abstract WordResponseDto entityToResponseDto(Word word);
 }
