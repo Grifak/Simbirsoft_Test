@@ -1,5 +1,7 @@
 package com.example.simbirsoft_test.service.impl;
 
+import com.example.simbirsoft_test.csv.CsvWriter;
+import com.example.simbirsoft_test.exception.DataBaseEmptyException;
 import com.example.simbirsoft_test.exception.HtmlReaderIOException;
 import com.example.simbirsoft_test.mapper.WordMapper;
 import com.example.simbirsoft_test.model.Word;
@@ -19,7 +21,8 @@ import java.util.List;
 public class WordServiceImpl implements WordService {
     private final HtmlReader htmlReader;
     private final WordMapper wordMapper;
-    private WordRepository repository;
+    private final WordRepository repository;
+    private final CsvWriter csvWriter;
 
     @Transactional
     @Override
@@ -35,6 +38,11 @@ public class WordServiceImpl implements WordService {
 
     @Override
     public Boolean downloadFile(HttpServletResponse servletResponse) {
-        return null;
+        List<Word> entities = repository.findAll();
+        if(entities.isEmpty())
+            throw new DataBaseEmptyException();
+
+        csvWriter.taskToCsv(entities, servletResponse);
+        return true;
     }
 }
