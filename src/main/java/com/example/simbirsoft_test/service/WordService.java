@@ -24,7 +24,7 @@ public interface WordService {
      * @param servletResponse from controller
      * @return true if downloaded, false if not downloaded
      */
-    Boolean downloadFile(HttpServletResponse servletResponse);
+    boolean downloadFile(HttpServletResponse servletResponse);
 
     /**
      * Delete all words

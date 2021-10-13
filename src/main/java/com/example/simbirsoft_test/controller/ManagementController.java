@@ -15,7 +15,7 @@ public class ManagementController {
 
     @GetMapping("/download")
     public ResponseEntity download(HttpServletResponse servletResponse){
-        Boolean result = wordService.downloadFile(servletResponse);
+        boolean result = wordService.downloadFile(servletResponse);
 
         return ResponseEntity.ok().body(result);
     }

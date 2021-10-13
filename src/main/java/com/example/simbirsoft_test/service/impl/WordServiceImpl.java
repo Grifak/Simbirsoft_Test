@@ -42,7 +42,7 @@ public class WordServiceImpl implements WordService {
     }
 
     @Override
-    public Boolean downloadFile(HttpServletResponse servletResponse) {
+    public boolean downloadFile(HttpServletResponse servletResponse) {
         List<Word> entities = repository.findAll();
         if(entities.isEmpty())
             throw new DataBaseEmptyException();
