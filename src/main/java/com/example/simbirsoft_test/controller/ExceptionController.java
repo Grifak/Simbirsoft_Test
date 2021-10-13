@@ -1,7 +1,10 @@
 package com.example.simbirsoft_test.controller;
 
 import com.example.simbirsoft_test.exception.ApiError;
+import com.example.simbirsoft_test.exception.CsvIOException;
+import com.example.simbirsoft_test.exception.DataBaseEmptyException;
 import com.example.simbirsoft_test.exception.HtmlReaderIOException;
+import liquibase.database.Database;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,7 +15,9 @@ import java.time.Instant;
 
 @ControllerAdvice
 public class ExceptionController {
-    @ExceptionHandler(HtmlReaderIOException.class)
+    @ExceptionHandler({HtmlReaderIOException.class,
+            CsvIOException.class,
+            DataBaseEmptyException.class})
     public ResponseEntity<ApiError> handleHtmlReaderEx(HtmlReaderIOException e){
         HttpStatus status = HttpStatus.BAD_REQUEST;
 
