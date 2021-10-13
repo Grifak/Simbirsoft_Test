@@ -4,10 +4,7 @@ import com.example.simbirsoft_test.dto.WordResponseDto;
 import com.example.simbirsoft_test.service.WordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,13 @@ public class WordController {
     @PostMapping("/create")
     public ResponseEntity<List<WordResponseDto>> createWords(@RequestParam("link") String link){
         List<WordResponseDto> response = wordService.createWords(link);
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<List<WordResponseDto>> deleteAllWords(){
+        List<WordResponseDto> response = wordService.deleteAllWords();
 
         return ResponseEntity.ok().body(response);
     }
