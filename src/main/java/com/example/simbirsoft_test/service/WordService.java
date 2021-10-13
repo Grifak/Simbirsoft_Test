@@ -25,4 +25,10 @@ public interface WordService {
      * @return true if downloaded, false if not downloaded
      */
     Boolean downloadFile(HttpServletResponse servletResponse);
+
+    /**
+     * Delete all words
+     * @return list with deleted words
+     */
+    List<WordResponseDto> deleteAllWords();
 }

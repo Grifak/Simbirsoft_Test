@@ -50,4 +50,14 @@ public class WordServiceImpl implements WordService {
         csvWriter.taskToCsv(entities, servletResponse);
         return true;
     }
+
+    @Override
+    public List<WordResponseDto> deleteAllWords() {
+        List<Word> entities = repository.findAll();
+        repository.deleteAll();
+
+        return entities.stream()
+                .map(e -> wordMapper.entityToResponseDto(e))
+                .collect(Collectors.toList());
+    }
 }
